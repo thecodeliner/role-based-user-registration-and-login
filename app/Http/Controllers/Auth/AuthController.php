@@ -44,22 +44,42 @@ class AuthController extends Controller
         $validated['user_image'] = $filePath;
       }
 
-      User::create(
+            //create user
+                $user = User::create(
 
-        [
-            'name'      => $validated['name'],
-            'email'     => $validated['email'],
-            'password'  => Hash::make($validated['password']),
-            'role'      => $validated['role'],
+                    [
+                        'name'      => $validated['name'],
+                        'email'     => $validated['email'],
+                        'password'  => Hash::make($validated['password']),
+                        'role'      => $validated['role'],
+                        'user_image'=> $validated['user_image'],
+                    ]
 
 
-        ]
+                );
+            //create teacher
+            if($request->role == 'teacher'){
+
+                $user->teacher()->create([
+                       'subject'    => $validated['subject'],
+                       'designation'=> $validated['designation'],
+                       'experience' => $validated['experience'],
+
+                    ]);
+                }
+
+                //create student
+            if($request->role == 'student'){
+
+                $user->student()->create([
+                       'department'    => $validated['department'],
+                       'roll'=> $validated['roll'],
+                       'semester' => $validated['semester'],
+
+                    ]);
+                }
 
 
-      );
-      Teacher::create([
-
-      ]);
         //dd($validated);
       return redirect()->back()->with('success', 'Registration successful. Please login.');
 

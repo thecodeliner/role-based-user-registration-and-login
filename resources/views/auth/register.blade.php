@@ -22,7 +22,7 @@
       @endif
 
 @if (@session('success'))
-    <p>{{ session('success') }}</p>
+    <p class="border rounder bg-green-200 text-black-300 p-2">{{ session('success') }}</p>
 
 @endif
     </div>
