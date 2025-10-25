@@ -22,13 +22,13 @@
       @endif
 
 @if (@session('success'))
-    <p class="border rounder bg-green-200 text-black-300 p-2">{{ session('success') }}</p>
+    <p class="border rounded bg-green-200 text-black-300 p-2">{{ session('success') }}</p>
 
 @endif
     </div>
 
     <!-- Common Fields -->
-    <form id="registerForm" class="space-y-4" method="post" action="{{ route('auth.register') }}" enctype="multipart/form-data">
+    <form id="registerForm" class="space-y-4" method="post" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
         <label class="block mb-2 text-gray-700 font-medium">Select Role</label>
         <select id="roleSelect" name="role" class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-300">
