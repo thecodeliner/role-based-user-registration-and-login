@@ -6,15 +6,15 @@
 <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
     <h2 class="text-2xl font-semibold text-center mb-6">Login Account</h2>
 
-    @if ($errors -> any)
-    <ul>
-    @foreach ($errors->all() as $error)
-
-            <li>{{ $error }}</li>
-
-    @endforeach
-    </ul>
-    @endif
+    <div class="error" >
+        @if ($errors->any)
+        <ul>
+        @foreach ($errors->all() as $error)
+            <li class="text-red-500 rounded bg-yellow-100 px-3 py-1">&#10007; {{ $error }}</li>
+        @endforeach
+        </ul>
+        @endif
+    </div>
 
     <form id="loginForm" class="space-y-4" method="POST" action="{{ route('login') }}">
         @csrf

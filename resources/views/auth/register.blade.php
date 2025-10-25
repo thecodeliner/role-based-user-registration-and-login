@@ -10,16 +10,15 @@
     <!-- Role Selection -->
     <div class="mb-4">
 
-      @if ($errors->any)
-      <div class="alert alert-danger">
-      <ul class="text-red-500">
-        @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-
-      </ul>
-      </div>
-      @endif
+        <div class="error" >
+            @if ($errors->any)
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li class="text-red-500 rounded bg-yellow-100 px-3 py-1">&#10007; {{ $error }}</li>
+            @endforeach
+            </ul>
+            @endif
+        </div>
 
 @if (@session('success'))
     <p class="border rounded bg-green-200 text-black-300 p-2">{{ session('success') }}</p>
